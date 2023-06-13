@@ -84,22 +84,37 @@ def visualizar_grafo():
 ventana = tk.Tk()
 ventana.title("TikTok - Recomendaciones")
 ventana.geometry("600x500")
+ventana.configure(bg="white")
 
 # Panel de la imagen
 panel = tk.Label(ventana)
 panel.pack(pady=10)
 
 # Botones
-btn_recomendaciones = tk.Button(ventana, text="Mostrar Recomendaciones", command=mostrar_recomendaciones)
+btn_style = {
+    "font": ("Helvetica", 12),
+    "width": 20,
+    "height": 2,
+    "bg": "lightblue",
+    "fg": "black",
+    "activebackground": "lightblue",
+    "activeforeground": "black"
+}
+
+btn_recomendaciones = tk.Button(ventana, text="Mostrar Recomendaciones", command=mostrar_recomendaciones, **btn_style)
 btn_recomendaciones.pack(pady=10)
 
-btn_anterior = tk.Button(ventana, text="Anterior", command=mostrar_anterior)
+frame_botones = tk.Frame(ventana, bg="white")
+frame_botones.pack()
+
+btn_anterior = tk.Button(frame_botones, text="Anterior", command=mostrar_anterior, **btn_style)
 btn_anterior.pack(side=tk.LEFT)
 
-btn_siguiente = tk.Button(ventana, text="Siguiente", command=mostrar_siguiente)
+btn_siguiente = tk.Button(frame_botones, text="Siguiente", command=mostrar_siguiente, **btn_style)
 btn_siguiente.pack(side=tk.LEFT)
 
-btn_visualizar_grafo = tk.Button(ventana, text="Visualizar Grafo", command=visualizar_grafo)
+btn_visualizar_grafo = tk.Button(ventana, text="Visualizar Grafo", command=visualizar_grafo, **btn_style)
 btn_visualizar_grafo.pack(pady=10)
 
+# Ejecutar ventana
 ventana.mainloop()
